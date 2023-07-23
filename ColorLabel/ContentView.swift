@@ -10,26 +10,22 @@ import SwiftUI
 struct ContentView: View {
     
     @State var value = 0.0
-    @State var valueTF = ""
     @State var valueTwo = 0.0
     @State var valueThree = 0.0
+    
+    //@State private var alertPresented = false
     
     var body: some View {
         VStack(spacing: 40) {
             Capsule()
                 .frame(width: 300, height: 100)
-//                .foregroundColor(Color(uiColor:
-//                                        UIColor(red: CGFloat(value),
-//                                                green: CGFloat(valueTwo),
-//                                                blue: CGFloat(valueThree),
-//                                                alpha: 1)))
                 .foregroundColor(Color(cgColor: CGColor(red: CGFloat(value / 255),
                                                         green: CGFloat(valueTwo / 255),
                                                         blue: CGFloat(valueThree / 255),
                                                         alpha: 1)))
-            SliderColorMore(value: $value, textFild: $valueTF)
-            SliderColorMore(value: $valueTwo, textFild: $valueTF)
-            SliderColorMore(value: $valueThree, textFild: $valueTF)
+            SliderColorMore(value: $value, color: .red)
+            SliderColorMore(value: $valueTwo, color: .green)
+            SliderColorMore(value: $valueThree,  color: .blue)
             Spacer()
         }
         
@@ -44,16 +40,20 @@ struct ContentView_Previews: PreviewProvider {
 }
 struct SliderColorMore: View {
     @Binding var value: Double
-    @Binding var textFild: String
+     var color: Color
     
     var body: some View {
         HStack {
             
             Text("\(lround(value))")
-                .frame(height: 20)
+                .frame(width: 40)
+                .foregroundColor(color)
             Slider(value: $value, in: 0...255, step: 1)
-            TextField("255", text: $textFild)
-            }
-        
+                .frame(width: 220)
+            TextField("\(lround(value))", value: $value, formatter: NumberFormatter())
+                .frame(width: 40
+                )
+                
+        }
     }
 }
