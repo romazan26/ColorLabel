@@ -9,11 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var value = 0.0
-    @State var valueTwo = 0.0
-    @State var valueThree = 0.0
-    
-    //@State private var alertPresented = false
+    @State private var value = 0.0
+    @State private var valueTwo = 0.0
+    @State private var valueThree = 0.0
     
     var body: some View {
         VStack(spacing: 40) {
@@ -51,8 +49,12 @@ struct SliderColorMore: View {
             Slider(value: $value, in: 0...255, step: 1)
                 .frame(width: 220)
             TextField("\(lround(value))", value: $value, formatter: NumberFormatter())
-                .frame(width: 40
-                )
+                .frame(width: 40)
+                    
         }
     }
-}
+    }
+
+
+
+
