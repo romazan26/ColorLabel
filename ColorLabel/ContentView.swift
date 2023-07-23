@@ -28,7 +28,6 @@ struct ContentView: View {
             SliderColorMore(value: $valueThree,  color: .blue)
             Spacer()
         }
-        
         .padding()
     }
 }
@@ -38,9 +37,10 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
 struct SliderColorMore: View {
     @Binding var value: Double
-     var color: Color
+    var color: Color
     
     var body: some View {
         HStack {
@@ -53,7 +53,6 @@ struct SliderColorMore: View {
             TextField("\(lround(value))", value: $value, formatter: NumberFormatter())
                 .frame(width: 40
                 )
-                
         }
     }
 }
